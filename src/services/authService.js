@@ -1,6 +1,8 @@
+// Archivo: src/services/authService.js
+
 import axios from 'axios';
 
-// La URL base de tu API. Lee la variable de entorno de Vite.
+// Esta línea lee la variable del archivo .env.local y la usa para construir la URL completa.
 const API_URL = import.meta.env.VITE_API_URL + '/api/auth';
 
 const registrar = (nombre, apellido, email, password) => {
