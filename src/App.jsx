@@ -1,63 +1,40 @@
-// Archivo: src/App.jsx
-
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Importa tus componentes de página
-import HomePage from './pages/HomePage'; // <-- ¡IMPORTA LA NUEVA PÁGINA!
+// Importa el Layout y tus páginas
+import Layout from './components/Layout';
+import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 
-// Este es solo un ejemplo, puedes borrarlo si ya tienes el tuyo
-const DashboardPage = () => <h2>Bienvenido a tu Panel</h2>; 
+// Componentes de ejemplo para las nuevas rutas
+const CentrosPage = () => <div className="container"><h1>Página de Centros Deportivos</h1></div>;
+const DeportesPage = () => <div className="container"><h1>Página de Deportes</h1></div>;
+const ContactoPage = () => <div className="container"><h1>Página de Contacto</h1></div>;
+const DashboardPage = () => <div className="container"><h1>Mi Panel de Usuario</h1></div>;
+const PerfilPage = () => <div className="container"><h1>Mi Perfil</h1></div>;
+
 
 function App() {
-    // Podrías tener una lógica aquí para ver si el usuario está logueado
-    const usuarioLogueado = JSON.parse(localStorage.getItem('usuario'));
-
     return (
         <Router>
-            {/* Opcional: Podrías mostrar una barra de navegación diferente si el usuario está logueado */}
-            {!usuarioLogueado && (
-                 <nav className="main-nav">
-                    <Link to="/">Inicio</Link>
-                    <Link to="/login">Login</Link>
-                    <Link to="/registro">Registro</Link>
-                </nav>
-            )}
-
-            <main>
+            {/* El Layout envuelve a todas las rutas */}
+            <Layout>
                 <Routes>
-                    {/* --- RUTA PRINCIPAL --- */}
-                    <Route path="/" element={<HomePage />} /> 
-
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/registro" element={<RegisterPage />} />
-                    <Route path="/dashboard" element={<DashboardPage />} /> 
+                    
+                    {/* Añade aquí las nuevas rutas */}
+                    <Route path="/centros" element={<CentrosPage />} />
+                    <Route path="/deportes" element={<DeportesPage />} />
+                    <Route path="/contacto" element={<ContactoPage />} />
+                    <Route path="/dashboard" element={<DashboardPage />} />
+                    <Route path="/perfil" element={<PerfilPage />} />
                 </Routes>
-            </main>
+            </Layout>
         </Router>
     );
 }
-
-// Estilo simple para la barra de navegación (puedes moverlo a un archivo CSS)
-const navStyle = `
-  .main-nav {
-    background-color: #333;
-    padding: 1rem;
-    text-align: center;
-  }
-  .main-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-`;
-
-const styleSheet = document.createElement("style");
-styleSheet.innerText = navStyle;
-document.head.appendChild(styleSheet);
-
 
 export default App;
