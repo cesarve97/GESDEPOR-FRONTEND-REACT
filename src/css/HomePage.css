@@ -1,0 +1,113 @@
+/* Archivo: src/css/HomePage.css */
+
+.homepage-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background: url('https://images.unsplash.com/photo-1542751371-65961642a85e?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+.homepage-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 20, 40, 0.7); /* Un overlay oscuro para mejorar la legibilidad del texto */
+    z-index: 1;
+}
+
+.homepage-content {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px); /* Efecto "frosty glass" */
+}
+
+.homepage-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #0056b3; /* Un azul corporativo */
+    margin: 0;
+}
+
+.homepage-subtitle {
+    font-size: 1.25rem;
+    color: #333;
+    margin-top: 0.5rem;
+    font-weight: 400;
+}
+
+.homepage-description {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 2rem 0;
+}
+
+.homepage-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Estilos base para los botones */
+.btn {
+    display: inline-block;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Botón principal (Crear cuenta) */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+/* Botón secundario (Iniciar sesión) */
+.btn-secondary {
+    background-color: #e9ecef;
+    color: #0056b3;
+    border: 1px solid #dee2e6;
+}
+
+.btn-secondary:hover {
+    background-color: #dee2e6;
+}
+
+/* Media query para pantallas más grandes */
+@media (min-width: 768px) {
+    .homepage-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
