@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
+import '../css/LoginPage.css';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -42,20 +43,20 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
-            <h2>Iniciar Sesión</h2>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label>Email:</label>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                </div>
-                <div>
-                    <label>Contraseña:</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit">Entrar</button>
-            </form>
+        <div className='login-container'>
+            <div className='login-form-wrapper'>
+                <h2>Iniciar Sesión</h2>
+                <form onSubmit={handleLogin}>
+                    <div className='login-form'>
+                        <label>Email:</label>
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <label>Contraseña:</label>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    </div>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    <button type="submit" className="login-btn">Entrar</button>
+                </form>
+            </div>
         </div>
     );
 };

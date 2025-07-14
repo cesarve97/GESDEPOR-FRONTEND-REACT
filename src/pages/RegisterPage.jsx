@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
+import '../css/RegisterPage.css';
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({
@@ -34,17 +35,29 @@ const RegisterPage = () => {
     };
 
     return (
-        <div>
-            <h2>Crear Cuenta</h2>
-            <form onSubmit={handleRegister}>
-                <input type="text" name="nombre" placeholder="Nombre" onChange={handleChange} required />
-                <input type="text" name="apellido" placeholder="Apellido" onChange={handleChange} />
-                <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-                <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} required />
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                {message && <p style={{ color: 'green' }}>{message}</p>}
-                <button type="submit">Registrarme</button>
-            </form>
+        <div className="register-container">
+            <div className="register-form-wrapper">
+                <h2>Crear Cuenta</h2>
+                <form className="register-form" onSubmit={handleRegister}>
+                    <input type="text" name="nombre" placeholder="Nombre" onChange={handleChange} required />
+                    <input type="text" name="apellido" placeholder="Apellido" onChange={handleChange} />
+                    <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+                    <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} required />
+                    <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña" onChange={handleChange} required />
+                    <select name="tipoUsuario" onChange={handleChange} required defaultValue="">
+                        <option value="" disabled>Selecciona tipo de usuario</option>
+                        <option value="Cliente">Cliente</option>
+                        <option value="Propietario">Propietario</option>
+                    </select>
+                    <input type="text" name="telefono" placeholder="Teléfono" onChange={handleChange} />
+                    <input type="text" name="direccion" placeholder="Dirección" onChange={handleChange} />
+                    <input type="text" name="fechaNacimiento" placeholder="Fecha de Nacimiento (YYYY-MM-DD)" onChange={handleChange} />
+                    <input type="text" name="dni" placeholder="DNI" onChange={handleChange} />
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    {message && <p style={{ color: 'green' }}>{message}</p>}
+                    <button type="submit">Registrarme</button>
+                </form>
+            </div>
         </div>
     );
 };
